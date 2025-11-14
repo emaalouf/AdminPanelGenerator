@@ -1,0 +1,95 @@
+{
+  "table": "users",
+  "auth": {
+    "type": "apikey",
+    "apiKey": "XYZ-SECURE-KEY-12345"
+  },
+  "fields": {
+    "id": {
+      "type": "int",
+      "primary": true,
+      "nullable": false,
+      "autoIncrement": true,
+      "default": null,
+      "enumValues": null,
+      "showInTable": true,
+      "filterable": false,
+      "editable": false,
+      "creatable": false,
+      "visible": true
+    },
+    "username": {
+      "type": "varchar",
+      "primary": false,
+      "nullable": false,
+      "autoIncrement": false,
+      "default": null,
+      "enumValues": null,
+      "showInTable": true,
+      "filterable": true,
+      "editable": true,
+      "creatable": true,
+      "visible": true
+    },
+    "email": {
+      "type": "varchar",
+      "primary": false,
+      "nullable": false,
+      "autoIncrement": false,
+      "default": null,
+      "enumValues": null,
+      "showInTable": true,
+      "filterable": true,
+      "editable": true,
+      "creatable": true,
+      "visible": true
+    },
+    "password": {
+      "type": "varchar",
+      "primary": false,
+      "nullable": false,
+      "autoIncrement": false,
+      "default": null,
+      "enumValues": null,
+      "showInTable": false,
+      "filterable": false,
+      "editable": true,
+      "creatable": true,
+      "visible": false
+    },
+    "role": {
+      "type": "enum",
+      "primary": false,
+      "nullable": false,
+      "autoIncrement": false,
+      "default": "editor",
+      "enumValues": ["admin", "editor", "viewer"],
+      "showInTable": true,
+      "filterable": true,
+      "editable": true,
+      "creatable": true,
+      "visible": true
+    },
+    "created_at": {
+      "type": "datetime",
+      "primary": false,
+      "nullable": false,
+      "autoIncrement": false,
+      "default": "CURRENT_TIMESTAMP",
+      "enumValues": null,
+      "showInTable": true,
+      "filterable": true,
+      "editable": false,
+      "creatable": false,
+      "visible": true
+    }
+  },
+  "dbConfig": {
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "password",
+    "database": "myapp"
+  }
+}
