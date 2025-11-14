@@ -1,1 +1,1 @@
-# NourAI
+# AdminPanelGenerator
