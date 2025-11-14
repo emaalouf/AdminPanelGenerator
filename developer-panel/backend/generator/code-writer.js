@@ -73,6 +73,22 @@ class CodeWriter {
     const filterableFields = allFields.filter(f => fields[f].filterable);
     const showInTableFields = allFields.filter(f => fields[f].showInTable);
 
+    // Transform config for MSSQL (use 'server' instead of 'host')
+    let finalDbConfig = { ...dbConfig };
+    if (dbType === 'mssql') {
+      finalDbConfig = {
+        server: dbConfig.host,
+        port: dbConfig.port || 1433,
+        user: dbConfig.user,
+        password: dbConfig.password,
+        database: dbConfig.database,
+        options: {
+          encrypt: true,
+          trustServerCertificate: true
+        }
+      };
+    }
+
     return `const express = require('express');
 const router = express.Router();
 ${dbType === 'mysql' ? "const mysql = require('mysql2/promise');" : "const sql = require('mssql');"}
@@ -80,7 +96,7 @@ const { Parser } = require('json2csv');
 const authMiddleware = require('../middleware/auth');
 
 // Database configuration
-const dbConfig = ${JSON.stringify(dbConfig, null, 2)};
+const dbConfig = ${JSON.stringify(finalDbConfig, null, 2)};
 
 // Apply auth middleware to all routes
 router.use(authMiddleware);

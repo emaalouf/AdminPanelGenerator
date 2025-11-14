@@ -365,6 +365,14 @@ The generated code is clean and modular. You can:
 - Check console for errors
 - Ensure database connection details are correct in config
 
+### MSSQL Error: "config.server property is required"
+If you see this error with MS SQL Server:
+- The config uses the wrong property name (`host` instead of `server`)
+- **Quick fix**: Run `node scripts/fix-mssql-config.js` from the project root
+- **Or**: Regenerate your tables using the Developer Panel
+- See [MSSQL_FIX.md](MSSQL_FIX.md) for detailed instructions
+- This only affects tables generated before the fix was applied
+
 ### Frontend Can't Connect to Backend
 - Verify backend is running
 - Check proxy settings in vite.config.js
